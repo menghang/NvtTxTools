@@ -29,13 +29,13 @@ namespace NvtTxCaliTool
         private void ButtonConnectComPort_Click(object sender, RoutedEventArgs e)
         {
             ComPortConfigViewModel tmpView = this.view.ComPortConfigView;
-            if (!tmpView.BtnConnect)
+            if (!tmpView.PortConnect)
             {
                 this.uart = new UartUtil(tmpView.SelectedPort);
                 this.uart.UartMsgReceived += UartPort_UartMsgReceived;
                 if (this.uart.OpenPort())
                 {
-                    tmpView.BtnConnect = true;
+                    tmpView.PortConnect = true;
                 }
             }
             else
@@ -45,7 +45,7 @@ namespace NvtTxCaliTool
                     this.uart.ClosePort();
                     this.uart.Dispose();
                 }
-                tmpView.BtnConnect = false;
+                tmpView.PortConnect = false;
             }
         }
 

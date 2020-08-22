@@ -13,18 +13,19 @@ namespace NvtTxCaliTool
         }
         public ObservableCollection<string> PortList { get; private set; }
             = new ObservableCollection<string>();
-        private bool btnConnect;//= false;
-        public bool BtnConnect
+        private bool portConnect;//= false;
+        public bool PortConnect
         {
-            get => this.btnConnect;
+            get => this.portConnect;
             set
             {
-                SetProperty(ref this.btnConnect, value, nameof(this.BtnConnectTxt));
+                SetProperty(ref this.portConnect, value);
+                OnPropertyChanged(nameof(this.BtnConnectTxt));
                 OnPropertyChanged(nameof(this.PortEnable));
             }
         }
-        public string BtnConnectTxt => this.btnConnect ? "Disconnect" : "Connect";
-        public bool PortEnable => !this.btnConnect;
+        public string BtnConnectTxt => this.portConnect ? "Disconnect" : "Connect";
+        public bool PortEnable => !this.portConnect;
 
         public void RefreshPortList()
         {

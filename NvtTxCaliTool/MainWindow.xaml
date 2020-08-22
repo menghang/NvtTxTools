@@ -258,6 +258,7 @@
             </GroupBox>
             <Button
                 Content="Start"
+                IsEnabled="{Binding ComPortConfigView.PortConnect}"
                 Grid.Row="2"
                 Margin="5"
                 FontSize="20"
