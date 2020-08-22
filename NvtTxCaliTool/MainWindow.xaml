@@ -1,0 +1,268 @@
+﻿<Window
+    x:Class="NvtTxCaliTool.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:NvtTxCaliTool"
+    mc:Ignorable="d"
+    Title="MainWindow"
+    Height="600"
+    Width="600"
+    Loaded="Window_Loaded"
+    ResizeMode="CanMinimize">
+    <DockPanel>
+        <Menu
+            DockPanel.Dock="Top">
+            <MenuItem
+                Header="Settings"
+                Height="30">
+                <MenuItem
+                    Header="Settings"
+                    Height="30"
+                    Click="MenuItemSettings_Click" />
+            </MenuItem>
+            <MenuItem
+                Header="About">
+                <MenuItem
+                    Header="About"
+                    Height="30" />
+            </MenuItem>
+        </Menu>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height="1.75*" />
+                <RowDefinition
+                    Height="7.75*" />
+                <RowDefinition
+                    Height="*" />
+            </Grid.RowDefinitions>
+            <GroupBox
+                Header="COM Port"
+                DataContext="{Binding ComPortConfigView}"
+                Grid.Row="0"
+                Margin="5"
+                FontSize="20"
+                FontFamily="Arial Black">
+                <UniformGrid
+                    Columns="3"
+                    Rows="1">
+                    <ComboBox
+                        ItemsSource="{Binding PortList}"
+                        SelectedItem="{Binding SelectedPort}"
+                        IsEnabled="{Binding PortEnable}"
+                        Grid.Column="1"
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        FontSize="20"
+                        FontFamily="Arial Black"
+                        IsReadOnly="True"
+                        Margin="5" />
+                    <Button
+                        Content="Refresh Port"
+                        IsEnabled="{Binding PortEnable}"
+                        Click="ButtonRefreshComPortList_Click"
+                        FontSize="20"
+                        FontFamily="Arial Black"
+                        Margin="5" />
+                    <Button
+                        Content="{Binding BtnConnectTxt}"
+                        Click="ButtonConnectComPort_Click"
+                        FontSize="20"
+                        FontFamily="Arial Black"
+                        Margin="5" />
+                </UniformGrid>
+            </GroupBox>
+            <GroupBox
+                Header="Calibration Data"
+                DataContext="{Binding CaliDataView}"
+                Grid.Row="1"
+                Margin="5"
+                FontSize="20"
+                FontFamily="Arial Black">
+                <Grid>
+                    <UniformGrid
+                        Columns="1"
+                        Rows="7">
+                        <Grid
+                            Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition
+                                    Width="1*" />
+                                <ColumnDefinition
+                                    Width="3*" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Content="Input:"
+                                VerticalContentAlignment="Center"
+                                FontSize="20"
+                                Grid.Column="0"
+                                FontFamily="Arial Black" />
+                            <TextBox
+                                Text="{Binding CaliInput}"
+                                Background="{Binding CaliInputColor, Mode=OneWay}"
+                                Grid.Column="1"
+                                VerticalContentAlignment="Center"
+                                HorizontalContentAlignment="Center"
+                                FontSize="20"
+                                FontFamily="Arial Black"
+                                IsReadOnly="True" />
+                        </Grid>
+                        <Grid
+                            Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition
+                                    Width="*" />
+                                <ColumnDefinition
+                                    Width="3*" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Content="Vsens:"
+                                VerticalContentAlignment="Center"
+                                FontSize="20"
+                                Grid.Column="0"
+                                FontFamily="Arial Black" />
+                            <TextBox
+                                Text="{Binding CaliVsens}"
+                                Background="{Binding CaliVsensColor, Mode=OneWay}"
+                                Grid.Column="1"
+                                VerticalContentAlignment="Center"
+                                HorizontalContentAlignment="Center"
+                                FontSize="20"
+                                FontFamily="Arial Black"
+                                IsReadOnly="True" />
+                        </Grid>
+                        <Grid
+                            Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition
+                                    Width="*" />
+                                <ColumnDefinition
+                                    Width="3*" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Content="Temp:"
+                                VerticalContentAlignment="Center"
+                                FontSize="20"
+                                Grid.Column="0"
+                                FontFamily="Arial Black" />
+                            <TextBox
+                                Text="{Binding CaliTemp}"
+                                Background="{Binding CaliTempColor, Mode=OneWay}"
+                                Grid.Column="1"
+                                VerticalContentAlignment="Center"
+                                HorizontalContentAlignment="Center"
+                                FontSize="20"
+                                FontFamily="Arial Black"
+                                IsReadOnly="True" />
+                        </Grid>
+                        <Grid
+                            Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition
+                                    Width="*" />
+                                <ColumnDefinition
+                                    Width="3*" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Content="Vcoil:"
+                                VerticalContentAlignment="Center"
+                                FontSize="20"
+                                Grid.Column="0"
+                                FontFamily="Arial Black" />
+                            <TextBox
+                                Text="{Binding CaliVcoil}"
+                                Background="{Binding CaliVcoilColor, Mode=OneWay}"
+                                Grid.Column="1"
+                                VerticalContentAlignment="Center"
+                                HorizontalContentAlignment="Center"
+                                FontSize="20"
+                                FontFamily="Arial Black"
+                                IsReadOnly="True" />
+                        </Grid>
+                        <Grid
+                            Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition
+                                    Width="*" />
+                                <ColumnDefinition
+                                    Width="3*" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Content="Q:"
+                                VerticalContentAlignment="Center"
+                                FontSize="20"
+                                Grid.Column="0"
+                                FontFamily="Arial Black" />
+                            <TextBox
+                                Text="{Binding CaliQ}"
+                                Background="{Binding CaliQColor, Mode=OneWay}"
+                                Grid.Column="1"
+                                VerticalContentAlignment="Center"
+                                HorizontalContentAlignment="Center"
+                                FontSize="20"
+                                FontFamily="Arial Black"
+                                IsReadOnly="True" />
+                        </Grid>
+                        <Grid
+                            Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition
+                                    Width="*" />
+                                <ColumnDefinition
+                                    Width="3*" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Content="Isens:"
+                                VerticalContentAlignment="Center"
+                                FontSize="20"
+                                Grid.Column="0"
+                                FontFamily="Arial Black" />
+                            <TextBox
+                                Text="{Binding CaliIsens}"
+                                Background="{Binding CaliIsensColor, Mode=OneWay}"
+                                Grid.Column="1"
+                                VerticalContentAlignment="Center"
+                                HorizontalContentAlignment="Center"
+                                FontSize="20"
+                                FontFamily="Arial Black"
+                                IsReadOnly="True" />
+                        </Grid>
+                        <Grid
+                            Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition
+                                    Width="*" />
+                                <ColumnDefinition
+                                    Width="3*" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Content="Result:"
+                                VerticalContentAlignment="Center"
+                                FontSize="20"
+                                Grid.Column="0"
+                                FontFamily="Arial Black" />
+                            <TextBox
+                                Text="{Binding CaliResult}"
+                                Background="{Binding CaliResultColor, Mode=OneWay}"
+                                Grid.Column="1"
+                                VerticalContentAlignment="Center"
+                                HorizontalContentAlignment="Center"
+                                FontSize="20"
+                                FontFamily="Arial Black"
+                                IsReadOnly="True" />
+                        </Grid>
+                    </UniformGrid>
+                </Grid>
+            </GroupBox>
+            <Button
+                Content="Start"
+                Grid.Row="2"
+                Margin="5"
+                FontSize="20"
+                FontFamily="Arial Black"
+                Click="ButtonStart_Click" />
+        </Grid>
+    </DockPanel>
+</Window>
