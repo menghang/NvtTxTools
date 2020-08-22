@@ -94,7 +94,7 @@ namespace NvtTxCaliTool
             }
             this.uart.StopReceiving();
             this.view.CaliDataView.UpdateResult();
-
+            this.view.CaliDataView.SaveData();
         }
 
         private void MenuItemSettings_Click(object sender, RoutedEventArgs e)

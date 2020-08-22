@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
+using System.Text;
 using System.Windows.Media;
 
 namespace NvtTxCaliTool
@@ -10,6 +12,7 @@ namespace NvtTxCaliTool
         private static readonly SolidColorBrush LightGreen = new SolidColorBrush(Colors.LightGreen);
         private static readonly SolidColorBrush LightPink = new SolidColorBrush(Colors.LightPink);
         private static readonly SolidColorBrush LightGray = new SolidColorBrush(Colors.LightGray);
+        private const string DataFolder = "Data";
 
         private SettingsWindowViewModel settings;
 
@@ -293,6 +296,48 @@ namespace NvtTxCaliTool
             {
                 Trace.WriteLine(ex.ToString());
                 return false;
+            }
+        }
+
+        public void SaveData()
+        {
+            try
+            {
+                string fileName = DateTime.Today.ToString("yyyyMMdd", CultureInfo.InvariantCulture) + ".csv";
+                string currentPath = Environment.CurrentDirectory;
+                string fullPath = Path.Combine(currentPath, DataFolder);
+                if (!Directory.Exists(fullPath))
+                {
+                    Directory.CreateDirectory(fullPath);
+                }
+                string file = Path.Combine(fullPath, fileName);
+
+                bool flagFileExist = File.Exists(file);
+                using (FileStream fs = new FileStream(file, flagFileExist ? FileMode.Append : FileMode.CreateNew))
+                {
+                    using (StreamWriter sw = new StreamWriter(fs, Encoding.UTF8))
+                    {
+                        if (!flagFileExist)
+                        {
+                            sw.WriteLine("Time,Input,Vsens,Temp,Vcoil,Q,Isens,Result");
+                        }
+                        StringBuilder sb = new StringBuilder()
+                            .Append(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss.ff", CultureInfo.InvariantCulture)).Append(',')
+                            .Append(this.CaliInput).Append(',')
+                            .Append(this.CaliVsens).Append(',')
+                            .Append(this.CaliTemp).Append(',')
+                            .Append(this.CaliVcoil).Append(',')
+                            .Append(this.CaliQ).Append(',')
+                            .Append(this.CaliIsens).Append(',')
+                            .Append(this.CaliResult);
+                        sw.WriteLine(sb.ToString());
+                        sw.Flush();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine(ex.ToString());
             }
         }
     }
