@@ -13,40 +13,44 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition
-                Height="8.7*" />
+                Height="*" />
+            <RowDefinition
+                Height="7.7*" />
             <RowDefinition
                 Height="*" />
         </Grid.RowDefinitions>
+        <Grid
+            Grid.Row="0"
+            Margin="10,5,10,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+                    Width="1*" />
+                <ColumnDefinition
+                    Width="3*" />
+            </Grid.ColumnDefinitions>
+            <Label
+                Content="Product:"
+                VerticalContentAlignment="Center"
+                FontSize="20"
+                Grid.Column="0"
+                FontFamily="Arial Black" />
+            <TextBox
+                Text="{Binding Product}"
+                VerticalContentAlignment="Center"
+                HorizontalContentAlignment="Center"
+                FontSize="20"
+                Grid.Column="1"
+                FontFamily="Arial Black" />
+        </Grid>
         <GroupBox
             Header="Calibration Data Limits"
+            Grid.Row="1"
             Margin="5"
             FontSize="20"
             FontFamily="Arial Black">
             <UniformGrid
-                Rows="8"
+                Rows="7"
                 Columns="1">
-                <Grid
-                    Margin="5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition
-                            Width="1*" />
-                        <ColumnDefinition
-                            Width="3*" />
-                    </Grid.ColumnDefinitions>
-                    <Label
-                        Content="Product:"
-                        VerticalContentAlignment="Center"
-                        FontSize="20"
-                        Grid.Column="0"
-                        FontFamily="Arial Black" />
-                    <TextBox
-                        Text="{Binding Product}"
-                        VerticalContentAlignment="Center"
-                        HorizontalContentAlignment="Center"
-                        FontSize="20"
-                        Grid.Column="1"
-                        FontFamily="Arial Black" />
-                </Grid>
                 <Grid
                     Margin="5">
                     <Grid.ColumnDefinitions>
