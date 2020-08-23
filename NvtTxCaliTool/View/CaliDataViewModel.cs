@@ -16,6 +16,11 @@ namespace NvtTxCaliTool
 
         private SettingsWindowViewModel settings;
 
+        public string Product
+        {
+            get => this.settings == null ? string.Empty : this.settings.Product;
+        }
+
         private string caliInput = string.Empty;
         public string CaliInput
         {
@@ -283,6 +288,7 @@ namespace NvtTxCaliTool
         public void LoadSettings(SettingsWindowViewModel s)
         {
             this.settings = s;
+            OnPropertyChanged(nameof(this.Product));
         }
 
         private static bool CheckPass(string valueStr, int lower, int upper)
