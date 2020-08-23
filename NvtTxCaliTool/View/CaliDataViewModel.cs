@@ -21,6 +21,13 @@ namespace NvtTxCaliTool
             get => this.settings == null ? string.Empty : this.settings.Product;
         }
 
+        private string qrCode = "Not Available";
+        public string QRCode
+        {
+            get => this.qrCode;
+            set => SetProperty(ref this.qrCode, value);
+        }
+
         private string caliInput = string.Empty;
         public string CaliInput
         {
@@ -326,10 +333,11 @@ namespace NvtTxCaliTool
                     {
                         if (!flagFileExist)
                         {
-                            sw.WriteLine("Time,Input,Vsens,Temp,Vcoil,Q,Isens,Result");
+                            sw.WriteLine("Time,QR Code,Input,Vsens,Temp,Vcoil,Q,Isens,Result");
                         }
                         StringBuilder sb = new StringBuilder()
                             .Append(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss.ff", CultureInfo.InvariantCulture)).Append(',')
+                            .Append(this.QRCode).Append(',')
                             .Append(this.CaliInput).Append(',')
                             .Append(this.CaliVsens).Append(',')
                             .Append(this.CaliTemp).Append(',')

@@ -126,8 +126,8 @@
                                 Grid.Column="0"
                                 FontFamily="Arial Black" />
                             <TextBox
-                                Text="Not Available"
-                                Background="LightGoldenrodYellow"
+                                Text="{Binding QRCode}"
+                                Background="{Binding CaliResultColor}"
                                 Grid.Column="1"
                                 VerticalContentAlignment="Center"
                                 HorizontalContentAlignment="Center"
