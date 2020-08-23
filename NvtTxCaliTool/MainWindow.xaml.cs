@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -7,7 +8,7 @@ namespace NvtTxCaliTool
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, IDisposable
     {
         private readonly MainWindowViewModel view;
         private SettingsWindowViewModel settingsView;
@@ -107,5 +108,46 @@ namespace NvtTxCaliTool
                 this.view.CaliDataView.LoadSettings(this.settingsView);
             }
         }
+
+
+        #region IDisposable Support
+        private bool disposedValue;// = false; // To detect redundant calls
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.disposedValue)
+            {
+                if (disposing)
+                {
+                    // dispose managed state (managed objects).
+                }
+
+                // free unmanaged resources (unmanaged objects) and override a finalizer below.
+                // set large fields to null.
+                if (this.uart != null)
+                {
+                    this.uart.Dispose();
+                }
+
+                this.disposedValue = true;
+            }
+        }
+
+        // override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
+        ~MainWindow()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(false);
+        }
+
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            // uncomment the following line if the finalizer is overridden above.
+            GC.SuppressFinalize(this);
+        }
+        #endregion
     }
 }
