@@ -38,7 +38,7 @@ namespace NvtTxCaliTool
                 catch (Exception ex)
                 {
                     Trace.WriteLine(ex.ToString());
-                    this.inputLow = 0;
+                    OnPropertyChanged(nameof(this.InputLowText));
                 }
             }
         }
@@ -64,7 +64,7 @@ namespace NvtTxCaliTool
                 catch (Exception ex)
                 {
                     Trace.WriteLine(ex.ToString());
-                    this.inputHigh = 99999;
+                    OnPropertyChanged(nameof(this.InputHighText));
                 }
             }
         }
@@ -90,7 +90,7 @@ namespace NvtTxCaliTool
                 catch (Exception ex)
                 {
                     Trace.WriteLine(ex.ToString());
-                    this.vsensLow = 0;
+                    OnPropertyChanged(nameof(this.VsensLowText));
                 }
             }
         }
@@ -115,7 +115,7 @@ namespace NvtTxCaliTool
                 catch (Exception ex)
                 {
                     Trace.WriteLine(ex.ToString());
-                    this.vsensHigh = 99999;
+                    OnPropertyChanged(nameof(this.VsensHighText));
                 }
             }
         }
@@ -140,7 +140,7 @@ namespace NvtTxCaliTool
                 catch (Exception ex)
                 {
                     Trace.WriteLine(ex.ToString());
-                    this.isensLow = 0;
+                    OnPropertyChanged(nameof(this.IsensLowText));
                 }
             }
         }
@@ -166,7 +166,7 @@ namespace NvtTxCaliTool
                 catch (Exception ex)
                 {
                     Trace.WriteLine(ex.ToString());
-                    this.isensHigh = 99999;
+                    OnPropertyChanged(nameof(this.IsensHighText));
                 }
             }
         }
@@ -192,7 +192,7 @@ namespace NvtTxCaliTool
                 catch (Exception ex)
                 {
                     Trace.WriteLine(ex.ToString());
-                    this.vcoilLow = 0;
+                    OnPropertyChanged(nameof(this.VcoilLowText));
                 }
             }
         }
@@ -217,7 +217,7 @@ namespace NvtTxCaliTool
                 catch (Exception ex)
                 {
                     Trace.WriteLine(ex.ToString());
-                    this.vcoilHigh = 99999;
+                    OnPropertyChanged(nameof(this.VcoilHighText));
                 }
             }
         }
@@ -242,7 +242,7 @@ namespace NvtTxCaliTool
                 catch (Exception ex)
                 {
                     Trace.WriteLine(ex.ToString());
-                    this.qLow = 0;
+                    OnPropertyChanged(nameof(this.QLowText));
                 }
             }
         }
@@ -268,7 +268,7 @@ namespace NvtTxCaliTool
                 catch (Exception ex)
                 {
                     Trace.WriteLine(ex.ToString());
-                    this.qHigh = 99999;
+                    OnPropertyChanged(nameof(this.QHighText));
                 }
             }
         }
@@ -294,7 +294,7 @@ namespace NvtTxCaliTool
                 catch (Exception ex)
                 {
                     Trace.WriteLine(ex.ToString());
-                    this.tempLow = 0;
+                    OnPropertyChanged(nameof(this.TempLowText));
                 }
             }
         }
@@ -319,7 +319,7 @@ namespace NvtTxCaliTool
                 catch (Exception ex)
                 {
                     Trace.WriteLine(ex.ToString());
-                    this.tempHigh = 99999;
+                    OnPropertyChanged(nameof(this.TempHighText));
                 }
             }
         }
