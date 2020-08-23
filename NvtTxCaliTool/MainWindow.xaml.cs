@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Globalization;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -83,6 +85,7 @@ namespace NvtTxCaliTool
 
         private async void ButtonStart_Click(object sender, RoutedEventArgs e)
         {
+            DateTime dt0 = DateTime.Now;
             this.uart.ClearBuf();
             this.uart.StartReceiving();
             this.uart.SendCaliCmd();
@@ -96,6 +99,8 @@ namespace NvtTxCaliTool
             this.uart.StopReceiving();
             this.view.CaliDataView.UpdateResult();
             this.view.CaliDataView.SaveData();
+            double period = (DateTime.Now - dt0).TotalMilliseconds;
+            Trace.WriteLine("Time Escape: " + period.ToString("0.00", CultureInfo.InvariantCulture));
         }
 
         private void MenuItemSettings_Click(object sender, RoutedEventArgs e)
