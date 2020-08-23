@@ -9,9 +9,9 @@ namespace NvtTxCaliTool
 {
     class CaliDataViewModel : BaseViewModel
     {
-        private static readonly SolidColorBrush LightGreen = new SolidColorBrush(Colors.LightGreen);
-        private static readonly SolidColorBrush LightPink = new SolidColorBrush(Colors.LightPink);
-        private static readonly SolidColorBrush LightGray = new SolidColorBrush(Colors.LightGray);
+        private static readonly SolidColorBrush ColorPass = new SolidColorBrush(Colors.LightGreen);
+        private static readonly SolidColorBrush ColorFail = new SolidColorBrush(Colors.LightPink);
+        private static readonly SolidColorBrush ColorTesting = new SolidColorBrush(Colors.LightGoldenrodYellow);
         private const string DataFolder = "Data";
 
         private SettingsWindowViewModel settings;
@@ -31,7 +31,7 @@ namespace NvtTxCaliTool
 
         public Brush CaliInputColor
         {
-            get => this.caliInputPass == null ? LightGray : this.caliInputPass == true ? LightGreen : LightPink;
+            get => this.caliInputPass == null ? ColorTesting : this.caliInputPass == true ? ColorPass : ColorFail;
         }
         private string caliVsens = string.Empty;
         public string CaliVsens
@@ -47,7 +47,7 @@ namespace NvtTxCaliTool
         }
         public Brush CaliVsensColor
         {
-            get => this.caliVsensPass == null ? LightGray : this.caliVsensPass == true ? LightGreen : LightPink;
+            get => this.caliVsensPass == null ? ColorTesting : this.caliVsensPass == true ? ColorPass : ColorFail;
         }
 
         private string caliTemp = string.Empty;
@@ -64,7 +64,7 @@ namespace NvtTxCaliTool
         }
         public Brush CaliTempColor
         {
-            get => this.caliTempPass == null ? LightGray : this.caliTempPass == true ? LightGreen : LightPink;
+            get => this.caliTempPass == null ? ColorTesting : this.caliTempPass == true ? ColorPass : ColorFail;
         }
 
         private string caliVcoil = string.Empty;
@@ -81,7 +81,7 @@ namespace NvtTxCaliTool
         }
         public Brush CaliVcoilColor
         {
-            get => this.caliVcoilPass == null ? LightGray : this.caliVcoilPass == true ? LightGreen : LightPink;
+            get => this.caliVcoilPass == null ? ColorTesting : this.caliVcoilPass == true ? ColorPass : ColorFail;
         }
 
         private string caliQ = string.Empty;
@@ -98,7 +98,7 @@ namespace NvtTxCaliTool
         }
         public Brush CaliQColor
         {
-            get => this.caliQPass == null ? LightGray : this.caliQPass == true ? LightGreen : LightPink;
+            get => this.caliQPass == null ? ColorTesting : this.caliQPass == true ? ColorPass : ColorFail;
         }
 
         private string caliIsens = string.Empty;
@@ -115,7 +115,7 @@ namespace NvtTxCaliTool
         }
         public Brush CaliIsensColor
         {
-            get => this.caliIsensPass == null ? LightGray : this.caliIsensPass == true ? LightGreen : LightPink;
+            get => this.caliIsensPass == null ? ColorTesting : this.caliIsensPass == true ? ColorPass : ColorFail;
         }
 
         private string caliResult = string.Empty;
@@ -132,7 +132,7 @@ namespace NvtTxCaliTool
         }
         public Brush CaliResultColor
         {
-            get => this.caliResultPass == null ? LightGray : this.caliResultPass == true ? LightGreen : LightPink;
+            get => this.caliResultPass == null ? ColorTesting : this.caliResultPass == true ? ColorPass : ColorFail;
         }
 
         private bool inputReceived;
