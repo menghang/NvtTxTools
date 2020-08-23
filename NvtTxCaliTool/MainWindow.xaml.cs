@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -90,11 +91,9 @@ namespace NvtTxCaliTool
             this.uart.StartReceiving();
             this.uart.SendCaliCmd();
             this.view.CaliDataView.Reset();
-            int count = 0;
-            while ((!this.view.CaliDataView.AllReceived) && (count < 10))
+            while ((!this.view.CaliDataView.AllReceived) && (dt0.AddSeconds(8) > DateTime.Now))
             {
-                await Task.Delay(1000).ConfigureAwait(false);
-                count++;
+                await Task.Run(() => Thread.Sleep(100)).ConfigureAwait(false);
             }
             this.uart.StopReceiving();
             this.view.CaliDataView.UpdateResult();
