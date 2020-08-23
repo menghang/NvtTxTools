@@ -6,7 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:NvtTxCaliTool"
     mc:Ignorable="d"
-    Title="MainWindow"
+    Title="NuVolta TX Calibration Tool"
     Height="600"
     Width="600"
     Loaded="Window_Loaded"
