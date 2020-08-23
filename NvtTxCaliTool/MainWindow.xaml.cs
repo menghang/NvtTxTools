@@ -87,10 +87,10 @@ namespace NvtTxCaliTool
         private async void ButtonStart_Click(object sender, RoutedEventArgs e)
         {
             DateTime dt0 = DateTime.Now;
+            this.view.CaliDataView.Reset();
             this.uart.ClearBuf();
             this.uart.StartReceiving();
             this.uart.SendCaliCmd();
-            this.view.CaliDataView.Reset();
             while ((!this.view.CaliDataView.AllReceived) && (dt0.AddSeconds(8) > DateTime.Now))
             {
                 await Task.Run(() => Thread.Sleep(100)).ConfigureAwait(false);
