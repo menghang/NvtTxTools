@@ -303,7 +303,8 @@ namespace NvtTxCaliTool
         {
             try
             {
-                string fileName = DateTime.Today.ToString("yyyyMMdd", CultureInfo.InvariantCulture) + ".csv";
+                string fileName = this.settings.Product + "-" +
+                    DateTime.Today.ToString("yyyyMMdd", CultureInfo.InvariantCulture) + ".csv";
                 string currentPath = Environment.CurrentDirectory;
                 string fullPath = Path.Combine(currentPath, DataFolder);
                 if (!Directory.Exists(fullPath))

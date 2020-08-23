@@ -10,6 +10,15 @@ namespace NvtTxCaliTool
     public class SettingsWindowViewModel : BaseViewModel
     {
         [Newtonsoft.Json.JsonIgnore]
+        private string product = "NuVoltaTX";
+        public string Product
+        {
+            get => this.product;
+            set => SetProperty(ref this.product, value);
+        }
+
+        #region CalibrationParameters
+        [Newtonsoft.Json.JsonIgnore]
         private int inputLow;
         public int InputLow
         {
@@ -314,6 +323,7 @@ namespace NvtTxCaliTool
                 }
             }
         }
+        #endregion
 
         public void SaveConfig(string file)
         {
@@ -344,6 +354,7 @@ namespace NvtTxCaliTool
                 }
                 if (view != null)
                 {
+                    this.Product = view.Product;
                     this.InputHigh = view.InputHigh;
                     this.InputLow = view.InputLow;
                     this.VsensHigh = view.VsensHigh;

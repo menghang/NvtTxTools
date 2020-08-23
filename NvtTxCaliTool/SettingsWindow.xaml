@@ -7,13 +7,13 @@
     xmlns:local="clr-namespace:NvtTxCaliTool"
     mc:Ignorable="d"
     Title="Settings"
-    Height="450"
-    Width="450"
+    Height="600"
+    Width="600"
     ResizeMode="CanMinimize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition
-                Height="6.7*" />
+                Height="8.7*" />
             <RowDefinition
                 Height="*" />
         </Grid.RowDefinitions>
@@ -23,8 +23,55 @@
             FontSize="20"
             FontFamily="Arial Black">
             <UniformGrid
-                Rows="6"
+                Rows="8"
                 Columns="1">
+                <Grid
+                    Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="1*" />
+                        <ColumnDefinition
+                            Width="3*" />
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Content="Product:"
+                        VerticalContentAlignment="Center"
+                        FontSize="20"
+                        Grid.Column="0"
+                        FontFamily="Arial Black" />
+                    <TextBox
+                        Text="{Binding Product}"
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        FontSize="20"
+                        Grid.Column="1"
+                        FontFamily="Arial Black" />
+                </Grid>
+                <Grid
+                    Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="2*" />
+                        <ColumnDefinition
+                            Width="3*" />
+                        <ColumnDefinition
+                            Width="3*" />
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Content="Low Limit"
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        FontSize="20"
+                        Grid.Column="1"
+                        FontFamily="Arial Black" />
+                    <Label
+                        Content="High Limit"
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        FontSize="20"
+                        Grid.Column="2"
+                        FontFamily="Arial Black" />
+                </Grid>
                 <Grid
                     Margin="5">
                     <Grid.ColumnDefinitions>
