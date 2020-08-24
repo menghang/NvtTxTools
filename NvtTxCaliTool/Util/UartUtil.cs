@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO.Ports;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace NvtTxCaliTool
 {
@@ -70,6 +71,7 @@ namespace NvtTxCaliTool
 
         private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
+            Thread.Sleep(100);
             string buf = this.port.ReadExisting();
             this.recBuf += buf;
             Regex regex = new Regex("[\\S ]+?\n\r");
