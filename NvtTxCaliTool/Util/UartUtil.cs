@@ -78,7 +78,11 @@ namespace NvtTxCaliTool
             for (int ii = 0; ii < mc.Count; ii++)
             {
                 string msg = mc[ii].Value.Replace("\n\r", "");
-                msgQueue.Enqueue(new UartMsgModel(msg));
+                UartMsgModel m = new UartMsgModel(msg);
+                if (m.Type != UartMsgModel.MsgType.UNKNOWN)
+                {
+                    msgQueue.Enqueue(new UartMsgModel(msg));
+                }
             }
             int p = this.recBuf.LastIndexOf("\r", StringComparison.InvariantCulture) + 1;
             this.recBuf = this.recBuf.Substring(p);
