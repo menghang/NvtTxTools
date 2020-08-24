@@ -56,7 +56,7 @@ namespace NvtTxCaliTool
         private void UartPort_UartMsgReceived(object sender, UartUtil.UartMsgEventArgs e)
         {
             Queue<UartMsgModel> msgQueue = e.MsgQueue;
-            while (msgQueue.Count > 0)
+            while ((msgQueue.Count > 0) && (!this.view.CaliDataView.AllReceived))
             {
                 UartMsgModel msg = msgQueue.Dequeue();
                 switch (msg.Type)
