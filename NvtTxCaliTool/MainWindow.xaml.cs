@@ -35,11 +35,14 @@ namespace NvtTxCaliTool
             ComPortConfigViewModel tmpView = this.view.ComPortConfigView;
             if (!tmpView.PortConnect)
             {
-                this.uart = new UartUtil(tmpView.SelectedPort);
-                this.uart.UartMsgReceived += UartPort_UartMsgReceived;
-                if (this.uart.OpenPort())
+                if (!string.IsNullOrEmpty(tmpView.SelectedPort))
                 {
-                    tmpView.PortConnect = true;
+                    this.uart = new UartUtil(tmpView.SelectedPort);
+                    this.uart.UartMsgReceived += UartPort_UartMsgReceived;
+                    if (this.uart.OpenPort())
+                    {
+                        tmpView.PortConnect = true;
+                    }
                 }
             }
             else
