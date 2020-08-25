@@ -77,7 +77,7 @@
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SettingsWindowViewModel.cs" />
-    <Compile Include="Util\UartMsgModel.cs" />
+    <Compile Include="Model\UartMsgModel.cs" />
     <Compile Include="View\CaliDataViewModel.cs" />
     <Compile Include="View\ComPortConfigViewModel.cs" />
     <Compile Include="Util\UartUtil.cs" />
