@@ -1,0 +1,41 @@
+﻿<Window
+    x:Class="NvtTxCaliTool.AboutWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:NvtTxCaliTool"
+    mc:Ignorable="d"
+    Title="About"
+    Height="300"
+    Width="300"
+    ResizeMode="CanMinimize">
+    <StackPanel>
+        <Grid>
+            <Image
+                Source="NuVolta.png"
+                Width="180"
+                Height="160" />
+        </Grid>
+        <Label
+            Content="TX Calibration Tool"
+            FontSize="20"
+            FontFamily="Arial Black"
+            Height="30"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center" />
+        <Label
+            Content="Written by Hang Meng"
+            FontSize="14"
+            FontFamily="Arial"
+            Height="30"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center" />
+        <Label
+            Content="Copyright © NuVolta 2020"
+            FontSize="10"
+            FontFamily="Arial"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center" />
+    </StackPanel>
+</Window>

@@ -26,7 +26,8 @@
                 Header="About">
                 <MenuItem
                     Header="About"
-                    Height="30" />
+                    Height="30"
+                    Click="MenuItemAbout_Click" />
             </MenuItem>
         </Menu>
         <Grid>
