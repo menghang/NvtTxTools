@@ -10,7 +10,8 @@
     Height="750"
     Width="600"
     Loaded="Window_Loaded"
-    ResizeMode="CanMinimize">
+    ResizeMode="CanMinimize"
+    PreviewTextInput="Window_PreviewTextInput">
     <DockPanel>
         <Menu
             DockPanel.Dock="Top">
@@ -68,13 +69,15 @@
                         Click="ButtonRefreshComPortList_Click"
                         FontSize="20"
                         FontFamily="Arial Black"
-                        Margin="5" />
+                        Margin="5"
+                        Focusable="False" />
                     <Button
                         Content="{Binding BtnConnectTxt}"
                         Click="ButtonConnectComPort_Click"
                         FontSize="20"
                         FontFamily="Arial Black"
-                        Margin="5" />
+                        Margin="5"
+                        Focusable="False" />
                 </UniformGrid>
             </GroupBox>
             <Grid
@@ -314,7 +317,8 @@
                 Margin="5"
                 FontSize="20"
                 FontFamily="Arial Black"
-                Click="ButtonStart_Click" />
+                Click="ButtonStart_Click"
+                Focusable="False" />
         </Grid>
     </DockPanel>
 </Window>

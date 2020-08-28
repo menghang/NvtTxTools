@@ -89,6 +89,12 @@ namespace NvtTxCaliTool
 
         private async void ButtonStart_Click(object sender, RoutedEventArgs e)
         {
+            this.view.CaliDataView.QRCode = "Not Available";
+            await RunCaliTest().ConfigureAwait(false);
+        }
+
+        private async Task RunCaliTest()
+        {
             DateTime dt0 = DateTime.Now;
             this.view.CaliDataView.Reset();
             this.uart.ClearBuf();
@@ -120,6 +126,29 @@ namespace NvtTxCaliTool
         {
             AboutWindow about = new AboutWindow();
             about.ShowDialog();
+        }
+
+        private string inputBuf = string.Empty;
+
+        private async void Window_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            if (this.view.ComPortConfigView.PortConnect)
+            {
+                char[] tmp = e.Text.ToCharArray();
+                foreach (char c in tmp)
+                {
+                    if (c == '\r')
+                    {
+                        this.view.CaliDataView.QRCode = this.inputBuf;
+                        this.inputBuf = string.Empty;
+                        await RunCaliTest().ConfigureAwait(false);
+                    }
+                    else
+                    {
+                        this.inputBuf += c;
+                    }
+                }
+            }
         }
 
 
