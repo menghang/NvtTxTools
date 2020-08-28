@@ -21,7 +21,7 @@ namespace NvtTxCaliTool
             get => this.settings == null ? string.Empty : this.settings.Product;
         }
 
-        private string qrCode = "Not Available";
+        private string qrCode = string.Empty;
         public string QRCode
         {
             get => this.qrCode;

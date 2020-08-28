@@ -141,6 +141,10 @@ namespace NvtTxCaliTool
                     {
                         this.view.CaliDataView.QRCode = this.inputBuf;
                         this.inputBuf = string.Empty;
+                        if (string.IsNullOrEmpty(this.view.CaliDataView.QRCode))
+                        {
+                            this.view.CaliDataView.QRCode = "Not Available";
+                        }
                         await RunCaliTest().ConfigureAwait(false);
                     }
                     else
