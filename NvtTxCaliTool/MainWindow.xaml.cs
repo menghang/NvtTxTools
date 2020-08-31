@@ -17,6 +17,7 @@ namespace NvtTxCaliTool
         private SettingsWindowViewModel settingsView;
         private UartUtil uart;
         private const string DefaultConfigFile = "Config.json";
+        private static bool running;
 
         public MainWindow()
         {
@@ -89,8 +90,17 @@ namespace NvtTxCaliTool
 
         private async void ButtonStart_Click(object sender, RoutedEventArgs e)
         {
-            this.view.CaliDataView.QRCode = "Not Available";
-            await RunCaliTest().ConfigureAwait(false);
+            if (running)
+            {
+                return;
+            }
+            else
+            {
+                running = true;
+                this.view.CaliDataView.QRCode = "Not Available";
+                await RunCaliTest().ConfigureAwait(false);
+                running = false;
+            }
         }
 
         private async Task RunCaliTest()
@@ -139,13 +149,24 @@ namespace NvtTxCaliTool
                 {
                     if (c == '\r')
                     {
-                        this.view.CaliDataView.QRCode = this.inputBuf;
-                        this.inputBuf = string.Empty;
-                        if (string.IsNullOrEmpty(this.view.CaliDataView.QRCode))
+
+                        if (running)
                         {
-                            this.view.CaliDataView.QRCode = "Not Available";
+                            this.inputBuf = string.Empty;
+                            return;
                         }
-                        await RunCaliTest().ConfigureAwait(false);
+                        else
+                        {
+                            running = true;
+                            this.view.CaliDataView.QRCode = this.inputBuf;
+                            this.inputBuf = string.Empty;
+                            if (string.IsNullOrEmpty(this.view.CaliDataView.QRCode))
+                            {
+                                this.view.CaliDataView.QRCode = "Not Available";
+                            }
+                            await RunCaliTest().ConfigureAwait(false);
+                            running = false;
+                        }
                     }
                     else
                     {
