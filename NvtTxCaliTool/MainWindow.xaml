@@ -17,14 +17,16 @@
             DockPanel.Dock="Top">
             <MenuItem
                 Header="Settings"
-                Height="30">
+                Height="30"
+                Focusable="False">
                 <MenuItem
                     Header="Settings"
                     Height="30"
                     Click="MenuItemSettings_Click" />
             </MenuItem>
             <MenuItem
-                Header="About">
+                Header="About"
+                Focusable="False">
                 <MenuItem
                     Header="About"
                     Height="30"
@@ -62,7 +64,8 @@
                         FontSize="20"
                         FontFamily="Arial Black"
                         IsReadOnly="True"
-                        Margin="5" />
+                        Margin="5"
+                        Focusable="False" />
                     <Button
                         Content="Refresh Port"
                         IsEnabled="{Binding PortEnable}"
