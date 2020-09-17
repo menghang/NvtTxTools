@@ -333,17 +333,32 @@ namespace NvtTxCaliTool
                     {
                         if (!flagFileExist)
                         {
-                            sw.WriteLine("Time,QR Code,Input,Vsens,Temp,Vcoil,Q,Isens,Result");
+                            sw.WriteLine("Time,QR Code," +
+                                "Input_Low,Input,Input_High,Vsens_Low,Vsens,Vsens_High," +
+                                "Temp_Low,Temp,Temp_High,Vcoil_Low,Vcoil,Vcoil_High," +
+                                "Q_Low,Q,Q_High,Isens_Low,Isens,Isens_High,Result");
                         }
                         StringBuilder sb = new StringBuilder()
                             .Append(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss.ff", CultureInfo.InvariantCulture)).Append(',')
                             .Append(this.QRCode).Append(',')
+                            .Append(this.settings.InputLow).Append(',')
                             .Append(this.CaliInput).Append(',')
+                            .Append(this.settings.InputHigh).Append(',')
+                            .Append(this.settings.VsensLow).Append(',')
                             .Append(this.CaliVsens).Append(',')
+                            .Append(this.settings.VsensHigh).Append(',')
+                            .Append(this.settings.TempLow).Append(',')
                             .Append(this.CaliTemp).Append(',')
+                            .Append(this.settings.TempHigh).Append(',')
+                            .Append(this.settings.VcoilLow).Append(',')
                             .Append(this.CaliVcoil).Append(',')
+                            .Append(this.settings.VcoilHigh).Append(',')
+                            .Append(this.settings.QLow).Append(',')
                             .Append(this.CaliQ).Append(',')
+                            .Append(this.settings.QHigh).Append(',')
+                            .Append(this.settings.IsensLow).Append(',')
                             .Append(this.CaliIsens).Append(',')
+                            .Append(this.settings.IsensHigh).Append(',')
                             .Append(this.CaliResult);
                         sw.WriteLine(sb.ToString());
                         sw.Flush();
