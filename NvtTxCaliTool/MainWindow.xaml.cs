@@ -17,7 +17,6 @@ namespace NvtTxCaliTool
         private SettingsWindowViewModel settingsView;
         private UartUtil uart;
         private const string DefaultConfigFile = "Config.json";
-        private static bool running;
 
         public MainWindow()
         {
@@ -137,8 +136,8 @@ namespace NvtTxCaliTool
             AboutWindow about = new AboutWindow();
             about.ShowDialog();
         }
-
-        private string inputBuf = string.Empty;
+        private static bool running;
+        private static bool done = true;
 
         private async void Window_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
@@ -147,30 +146,40 @@ namespace NvtTxCaliTool
                 char[] tmp = e.Text.ToCharArray();
                 foreach (char c in tmp)
                 {
-                    if (c == '\r')
+                    if (running)
                     {
-
-                        if (running)
+                        return;
+                    }
+                    else
+                    {
+                        if (done)
                         {
-                            this.inputBuf = string.Empty;
-                            return;
+                            this.view.CaliDataView.QRCode = string.Empty;
                         }
-                        else
+                        if (('A' <= c && c <= 'Z') || ('a' <= c && c <= 'z') || ('0' <= c && c <= '9'))
+                        {
+                            this.view.CaliDataView.QRCode += c;
+                            done = false;
+                        }
+                        else if (c == '\b')
+                        {
+                            string s = this.view.CaliDataView.QRCode;
+                            if (!string.IsNullOrEmpty(s))
+                            {
+                                this.view.CaliDataView.QRCode = s.Substring(0, s.Length - 1);
+                            }
+                        }
+                        else if (c == '\r')
                         {
                             running = true;
-                            this.view.CaliDataView.QRCode = this.inputBuf;
-                            this.inputBuf = string.Empty;
                             if (string.IsNullOrEmpty(this.view.CaliDataView.QRCode))
                             {
                                 this.view.CaliDataView.QRCode = "Not Available";
                             }
                             await RunCaliTest().ConfigureAwait(false);
                             running = false;
+                            done = true;
                         }
-                    }
-                    else
-                    {
-                        this.inputBuf += c;
                     }
                 }
             }
