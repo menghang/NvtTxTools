@@ -106,12 +106,13 @@ namespace NvtTxCaliTool
         {
             DateTime dt0 = DateTime.Now;
             this.view.CaliDataView.Reset();
+            this.uart.SendCaliCmd();
+            await Task.Delay(500).ConfigureAwait(false);
             this.uart.ClearBuf();
             this.uart.StartReceiving();
-            this.uart.SendCaliCmd();
             while ((!this.view.CaliDataView.AllReceived) && (dt0.AddSeconds(8) > DateTime.Now))
             {
-                await Task.Run(() => Thread.Sleep(100)).ConfigureAwait(false);
+                await Task.Delay(100).ConfigureAwait(false);
             }
             this.uart.StopReceiving();
             this.view.CaliDataView.UpdateResult();
